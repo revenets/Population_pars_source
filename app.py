@@ -1,9 +1,10 @@
 from flask import Flask, request, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 
+DBNAME = "population.sqlite3"
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///population.sqlite3"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + DBNAME
 app.config["SECRET_KEY"] = "wkjeqsdejnsxrgewkhvgfslsqf"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)

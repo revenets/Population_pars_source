@@ -1,6 +1,8 @@
+import os
+
 import requests
 from bs4 import BeautifulSoup
-from Docker_project.app import db, Region, Country
+from Docker_project.app import db, Region, Country, DBNAME
 
 
 URL = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
@@ -34,6 +36,9 @@ def get_content(html):
 def parse():
     html = get_html(URL)
     if html.status_code == 200:
+        if os.path.exists(DBNAME):
+            os.remove(DBNAME)
+
         db.create_all()
         population = get_content(html.text)
         regions = set()
