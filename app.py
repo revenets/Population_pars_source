@@ -43,10 +43,16 @@ def index():
     region_list = []
     regions = Region.query.order_by(Region.name)
     for region in regions:
+
         max_pop_in_region = max(Country.query.filter(Country.region == region).order_by(Country.population))
         min_pop_in_region = min(Country.query.filter(Country.region == region).order_by(Country.population))
         region_list.append([region, max_pop_in_region, min_pop_in_region])
     return render_template("index.html", region_list=region_list)
+
+
+@app.template_filter()
+def numberFormat(value):
+    return format(int(value), ',d')
 
 
 if __name__ == '__main__':

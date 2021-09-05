@@ -13,6 +13,7 @@ Population rating
 <div class="block">
     <div>
         <h2>{{ el[0] }}</h2>
+        <h5 class="num"> Total population: {{ el[0].population | sum(attribute='population') | numberFormat }}</h5>
     </div>
     <div class="maximum">
         <h4> Maximum population </h4>

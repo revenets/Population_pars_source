@@ -2,7 +2,7 @@ import os
 
 import requests
 from bs4 import BeautifulSoup
-from Docker_project.app import db, Region, Country, DBNAME
+from Wiki_parse_1.app import db, Region, Country, DBNAME
 
 
 URL = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
